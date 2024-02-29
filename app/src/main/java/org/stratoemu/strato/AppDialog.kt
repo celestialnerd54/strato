@@ -127,12 +127,13 @@ class AppDialog : BottomSheetDialogFragment() {
             AlertDialog.Builder(requireContext())
                 .setTitle(getString(R.string.delete_save_confirmation_message))
                 .setMessage(getString(R.string.action_irreversible))
-                .setNegativeButton(getString(R.string.no), null)
-                .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                .setPositiveButton(getString(R.string.ok)) { _, _ ->
                     SaveManagementUtils.deleteSaveFile(item.titleId)
                     binding.deleteSave.isEnabled = false
                     binding.exportSave.isEnabled = false
-                }.show()
+                }
+                .setNegativeButton(getString(R.string.cancel), null)
+                .show()
         }
 
         binding.importSave.setOnClickListener {
